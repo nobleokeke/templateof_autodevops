@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Leather Jacket WebAR</title>
+    <meta name="Noble Okeke" content="noble@cosmixar.com CosmixAR" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"
+    ></script>
+    <script
+      src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js"
+      defer
+    ></script>
+  </head>
+  
+    <!-- THE STYLING OF THIS PAGE GOES BETWEEN THE STYLE TAGS-->
+  <style>
+    body {
+      margin: 0px;
+      overflow: hidden;
+    }
+    model-viewer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      outline: none;
+     /*background-color: #f00;*/
+   /* background-image: url(https://cdn.glitch.global/f8d4c00f-362f-4fc4-a453-406a4a3ce1f0/promotion426.png?v=1663292976419); */
+/*   background-image: url(https://cdn.glitch.global/ed439f25-d306-41aa-8387-0b0e87daae12/laborday.png?v=1662475721902); */
+     background-repeat:no-repeat;
+      --poster-color: #eee;
+      overflow: hidden;
+    }
+
+    #ar-button {
+      background-image: url(https://cdn.glitch.global/ed439f25-d306-41aa-8387-0b0e87daae12/ic_view_in_ar_new.png?v=1659797037901);
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      background-position: 12px 50%;
+      background-color: #fff;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      bottom: 30px;
+      padding: 0px 16px 0px 40px;
+      font-family: Roboto Regular, Helvetica Neue, sans-serif;
+      font-size: 14px;
+      color: #4285f4;
+      height: 36px;
+      line-height: 36px;
+      border-radius: 18px;
+      border: 1px solid #dadce0;
+    }
+
+    #ar-button:active {
+      background-color: #e8eaed;
+    }
+
+    #ar-button:focus {
+      outline: none;
+    }
+
+    #ar-button:focus-visible {
+      outline: 1px solid #4285f4;
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: 13%;
+      left: 50%;
+      transform: translate(-50%, 10%);
+      text-align: center;
+      color: #4285f4;
+      font-size: 25px;
+      font-family: Lexend;
+    }
+    .progressAmmount {
+      font-size: 15px;
+    }
+    .progressStyle {
+      margin: auto;
+      width: 30vw;
+      border-style: solid;
+      border-radius: 10px;
+      border-color: #4285f4;
+    }
+    .update-bar {
+      width: 1%;
+      height: 10px;
+      background-color: #2196f380;
+    }
+    .hidden {
+      display: none;
+    }
+
+    .shopNowButton {
+      position: absolute;
+      bottom: 8%;
+      left: 50%;
+      transform: translate(-50%, 10%);
+      text-align: center;
+      color: #4285f4;
+      font-size: 25px;
+      font-family: Lexend;
+    }
+    .shopNowButton img {
+      width: 100%;
+    }
+
+    .Hotspot {
+      background: white;
+      border-radius: 10px;
+      border: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      box-sizing: border-box;
+      cursor: pointer;
+      height: 20px;
+      padding: 0px;
+      position: relative;
+      transition: opacity 0.3s;
+      width: 20px;
+    }
+
+    .Hotspot:not([data-visible]) {
+      /* background: transparent; */
+      border: 1px solid white;
+      box-shadow: none;
+      height: 10px;
+      pointer-events: none;
+      width: 10px;
+    }
+
+    .Hotspot:focus {
+      border: 1px solid rgb(0, 128, 200);
+      height: 10px;
+      outline: none;
+      width: 10px;
+    }
+
+    .Hotspot > * {
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+
+    .HotspotAnnotation {
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      color: rgb(43, 43, 43);
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      left: calc(100% + 1em);
+      max-width: 180px;
+      padding: 0.5em 1em;
+      position: absolute;
+      top: 50%;
+      width: max-content;
+      background-color: #ffffff5c;
+      text-decoration: none;
+    }
+
+    .Hotspot:not([data-visible]) > * {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(calc(-50% + 4px));
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    
+  </style>
+  
+  <!-- THE CONTENT OF THIS PAGE STARTS BELOW-->
+  <body>
+    
+    <!-- BEGINNING OF MODEL VIEWER DIV-->
+    <model-viewer
+      id="demo"
+      src="https://cdn.glitch.global/083fc4c8-4c67-4d33-9e76-2493bde9680e/compressednewsuilt.glb?v=1689427510790"
+      camera-controls
+      shadow-intensity="1"
+      camera-orbit="-2.152deg 75.77deg auto"
+      ar
+      ar-modes=" webxr scene-viewer quick-look"
+      alt="Leather Jacket 3D Model"
+      exposure="1"
+    >
+      <!-- THIS VIEW IN AR BUTTON SHOWS ON MOBILE ONLY -->
+      <button slot="ar-button" id="ar-button">View Leather Jacket in AR</button>
+
+       <!-- THIS BUTTON IS A WHITE DOT THAT IS A HOTSPOT" -->
+      <button class="Hotspot"
+        slot="hotspot-1" 
+        data-position="9.914505546030808m 105.5656560351285m 14.062051893206062m" 
+        data-normal="0.5022548535024767m 0.05765078758169823m 0.8627957167397251m"
+        data-visibility-attribute="visible">
+  
+   <!-- THIS IS A ORDER NOW LINK THAT IS WITHIN A BUTTON ELEMENT -->
+        <a
+          href="https://velocitymaryland.com/velocity_apparel_merch/shop/home"
+          target="_blank"
+          class="HotspotAnnotation"
+          >Click Here to Order
+        </a>
+         <!-- END OF BUTTON ELEMENT-->
+      </button>
+
+       <!-- PROGRESS BAR ELEMENTS-->
+      <div class="progress-bar hide loadingUI" slot="progress-bar">
+        <div class="progressAmmount">100%</div>
+        <div class="progressTitle">LOADING MODEL</div>
+        <div class="progressStyle">
+          <div class="update-bar"></div>
+        </div>
+      </div>
+      
+    <!-- END OF MODEL VIEWER DIV-->
+    <script> 
+// Hide access to code/** 
+//Disable right-click of mouse, F12 key, and save key combinations on page 
+ document.addEventListener("contextmenu", function(e){ 
+ e.preventDefault(); 
+ }, false); 
+ document.addEventListener("keydown", function(e) { 
+ //document.onkeydown = function(e) { 
+ // "I" key 
+ if (e.ctrlKey && e.shiftKey && e.keyCode == 73) { 
+ disabledEvent(e); 
+ } 
+ // "J" key 
+ if (e.ctrlKey && e.shiftKey && e.keyCode == 74) { 
+ disabledEvent(e); 
+ } 
+ // "S" key + macOS 
+ if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) { 
+ disabledEvent(e); 
+ } 
+ // "U" key 
+ if (e.ctrlKey && e.keyCode == 85) { 
+ disabledEvent(e); 
+ } 
+ // "F12" key 
+ if (event.keyCode == 123) { 
+ disabledEvent(e); 
+ } 
+ // "C" key 
+ if (e.ctrlKey && event.keyCode == 67) { 
+ disabledEvent(e); 
+ } 
+ }, false); 
+ function disabledEvent(e){ 
+ if (e.stopPropagation){ 
+ e.stopPropagation(); 
+ } else if (window.event){ 
+ window.event.cancelBubble = true; 
+ } 
+ e.preventDefault(); 
+ return false; 
+ }</script>
+    </model-viewer>
+    
+  </body>
+  <script>
+   const queryString = window.location.search;
+   const urlParams = new URLSearchParams(queryString);
+
+    let modelURLValue = urlParams.has("model") ? urlParams.get("model") : "3";
+
+    console.log(modelURLValue);
+    const modelViewer = document.querySelector("model-viewer");
+    const progressAmmount = document.querySelector(".progressAmmount");
+    const updateBar = document.querySelector(".update-bar");
+
+    <!--NIO modelViewer.setAttribute("src", `https://cdn.glitch.global/ed439f25-d306-41aa-8387-0b0e87daae12/decimated%20ford.glb?v=1662475915823`);
+
+    <!--NIO modelViewer.setAttribute("poster", `https://cdn.glitch.global/ed439f25-d306-41aa-8387-0b0e87daae12/bigbanktruckimage.png?v=1659798806948`);
+
+    const progressBar = document.querySelector(".progress-bar");
+    const uiContainer = document.querySelector(".loadingUI");
+
+    let modelLoaded = false;
+
+    modelViewer.addEventListener("progress", (e) => {
+      progressBar.style.display = "block";
+      const presentage = Math.floor(e.detail.totalProgress * 100);
+      progressAmmount.innerHTML = presentage + "%";
+      updateBar.style.width = `${presentage}%`;
+    });
+
+    modelViewer.addEventListener("load", () => {
+      setTimeout(function () {
+        progressBar.style.display = "none";
+        if (!modelLoaded) {
+          uiContainer.classList.toggle("hidden");
+          modelLoaded = true;
+        }
+      }, 1000);
+    });
+  </script>
+</html>

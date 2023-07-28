@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="Noble Okeke" content="noble@cosmixar.com CosmixAR" />
+    <title>Oga Hats WebAR</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: green;
+    }
+    .topMenus {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: row;
+      height: 100px;
+      background-color: green;
+    }
+    .homeMenu {
+      flex: 1;
+    }
+    .logo {
+      flex-grow: 1;
+      flex: 3;
+      font-size: 4vw;
+      font-family: Arial;
+      margin-top: 100px;
+      background-color: green;
+    }
+
+    .homeCart {
+      flex: 1;
+    }
+    .homeMenu div {
+      width: 70px;
+      height: 8px;
+      background-color: black;
+      margin: 17px auto;
+    }
+
+    .topMenus > div {
+      display: block;
+      width: 77px;
+      align-self: center;
+
+      text-align: center;
+    }
+    .homeCart img {
+      width: 100%;
+    }
+    .homeCart > div {
+      width: 30%;
+      margin: auto;
+
+      align-self: center;
+      background-color: white;
+      text-align: center;
+      padding: 15px;
+      /*border-style: solid;*/
+      border-radius: 50px;
+    }
+
+    .SearchBar {
+      position: relative;
+      width: 500px;
+      margin: 50px auto;
+    }
+    .SearchPlace {
+      display: block;
+      margin: auto;
+      width: 100%;
+      height: 50px;
+      border-radius: 51px;
+      border-style: none;
+      box-shadow: 0px 9px 22px #95959561;
+      font-size: 25px;
+    }
+    .SearchIcon {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      transform: scale(0.6);
+    }
+    .SearchIcon img {
+      height: 100%;
+    }
+    .productsContainer img {
+      /*width: 100%;*/
+    }
+    .productsContainer {
+      margin-top: 100px;
+      display: flex;
+      align-content: space-around;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      row-gap: 100px;
+      background-color: green;
+    }
+
+    .product {
+      display: flex;
+      align-content: space-around;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      width: 80%;
+      border-radius: 20px;
+      background-color: orange;
+      box-shadow: 0px 0px 80px 20px #95959563;
+
+      /*margin: 120px;*/
+    }
+    .product > div {
+      margin: 12px auto;
+    }
+    .thumnailImage {
+      width: 750px;
+      /*height: 450px;*/
+      object-fit: cover;
+      text-align: center;
+    }
+    .productTitle {
+      font-size: 40px;
+      font-family: sans-serif;
+/*       font-weight: 600; */
+      text-align: center;
+    }
+    .productPrice {
+      font-size: 30px;
+      font-family: sans-serif;
+      font-weight: 500;
+    }
+    .aroverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .thumnail {
+      position: relative;
+    }
+
+    .fooderContainer {
+      height: 500px;
+    }
+    
+    .cos {
+      font-size:50px;
+    }
+    
+    .igbo {
+      font-size:35px;
+    }
+  </style>
+  <body>
+
+    <div class="topMenus">
+ 
+      <!--TITLE DIV-->
+      <div class="logo">
+        <span class="cos">CosmixAR</span>
+        <span class="igbo">Oga Hats WebAR</span>
+      </div>
+    </div>
+    <!-- 
+<div class="SearchBar">
+<input  class="SearchPlace" type="text" placeholder="Search..">
+<div  class="SearchIcon" type="submit"><img src="assets/images/icons8-search-24.png"></div>
+</div> -->
+
+    <div class="productsContainer"> <!--a Div with a green background-->
+       
+      <!--a Div with an orange background-->
+      <div class="product" id="food1" onclick="redirectURL('1')">
+        
+        <!--Div with an img element and a linked photo source (src)-->
+        <div class="thumnail">
+          <!--This is the img element with the linked image-->
+          <img class="thumnailImage" src="https://cdn.glitch.global/ed439f25-d306-41aa-8387-0b0e87daae12/bigbanktruckimage.png?v=1659798806948" />
+       <!--END OF PRODUCT DIV-->
+        </div>
+        
+        <!--This is the product title-->
+        <div class="productTitle">
+          Welcome to 1 Deep!
+          <!--END OF PRODUCT TITLE DIV-->
+        </div>
+        
+        <!--END OF PRODUCT DIV-->
+      </div>
+      <!--END OF CONTAINER DIV-->
+    </div>
+    
+  </body>
+  <script>
+    function redirectURL(models) {
+      const urls = `aparrel.html`;
+      window.open(urls);
+    }
+  </script>
+</html>
